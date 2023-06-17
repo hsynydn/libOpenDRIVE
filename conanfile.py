@@ -55,11 +55,12 @@ class OpenDriveConan(ConanFile):
 
     def package(self):
         self.copy("*.so", dst="lib", keep_path=False, symlinks=True)
-        self.copy("include/*", dst="include", keep_path=False, symlinks=True)
+        self.copy("include/*", dst="", keep_path=True, symlinks=True)
         self.copy("thirdparty/pugixml/*", dst="include/pugixml", keep_path=False, symlinks=True)
         self.copy("thirdparty/earcut/*", dst="include/earcut", keep_path=False, symlinks=True)
 
     def package_info(self):
+        self.cpp_info.libs = ["OpenDrive"]
         self.cpp_info.set_property("cmake_file_name", "OpenDrive")
         self.cpp_info.set_property("cmake_target_name", "OpenDrive::OpenDrive")
 
